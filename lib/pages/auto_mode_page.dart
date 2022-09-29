@@ -23,10 +23,10 @@ class AutoModePage extends StatelessWidget {
             itemCount: 4,
             itemBuilder: (BuildContext context, int index) {
               List<String> methods = [
-                'Телеграмм 5 дней',
-                'Голосовой обзвон 13 дней',
-                'Смс  10 дней',
-                'Вотсапп апи 20 дней,'
+                'Телеграмм рассылка - 5 дней',
+                'Голосовой обзвон ботом - 13 дней',
+                'Смс рассылка - 10 дней',
+                'Ватсапп рассылка - 20 дней',
               ];
               List<IconData> icons = [
                 Icons.telegram,

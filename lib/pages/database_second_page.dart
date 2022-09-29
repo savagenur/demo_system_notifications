@@ -1,44 +1,49 @@
 import 'package:demo_system_notifications/models/client.dart';
+import 'package:demo_system_notifications/models/telegram_client.dart';
 import 'package:demo_system_notifications/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class DatabasePage extends StatefulWidget {
+class DatabaseSecondPage extends StatefulWidget {
   final int selectedIndex;
   final Function(int index) selectedIndexSetter;
 
-  const DatabasePage(
+  const DatabaseSecondPage(
       {super.key,
       required this.selectedIndexSetter,
       required this.selectedIndex});
 
   @override
-  State<DatabasePage> createState() => _DatabasePageState();
+  State<DatabaseSecondPage> createState() => _DatabaseSecondPageState();
 }
 
-class _DatabasePageState extends State<DatabasePage> {
-  late final List<Client> clients;
+class _DatabaseSecondPageState extends State<DatabaseSecondPage> {
+  late final List<TelegramClient> clients;
   late final List<String> titleColumns;
   @override
   void initState() {
-    clients = List.of(allClients);
-    titleColumns = List.of(allColumns);
+    clients = List.of(allTelegramClients);
+    titleColumns = List.of(allTelegramColumns);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     List<DataColumn> columns =
-        titleColumns.map((title) => DataColumn(label: Text(title))).toList();
+        titleColumns.map((title) => DataColumn(label: Text(title,style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold)))).toList();
     List<DataRow> rows = clients.map((client) {
       List<DataCell> cells = [
-        DataCell(Text(client.name)),
-        DataCell(Text(client.address)),
-        DataCell(Text(client.service)),
-        DataCell(Text(client.telegram)),
-        DataCell(Text(client.phoneNumber)),
-        DataCell(
-          Text(client.communicationSystem),
-        ),
+        DataCell(Text(client.id, style: TextStyle(fontSize: 12),)),
+        DataCell(Text(client.name, style: TextStyle(fontSize: 12),)),
+        DataCell(Text(client.name, style: TextStyle(fontSize: 12),)),
+        DataCell(Text(client.telegramId, style: TextStyle(fontSize: 12),)),
+        DataCell(Text(client.language, style: TextStyle(fontSize: 12),)),
+        DataCell(Text(client.phoneNumber, style: TextStyle(fontSize: 12),)),
+        DataCell(Text(client.age, style: TextStyle(fontSize: 12),)),
+        DataCell(Text(client.occupation, style: TextStyle(fontSize: 12),)),
+        DataCell(Text(client.clicks, style: TextStyle(fontSize: 12),)),
+        DataCell(Text(client.activity, style: TextStyle(fontSize: 12),)),
+        DataCell(Text(client.city, style: TextStyle(fontSize: 12),)),
+        DataCell(Text(client.district, style: TextStyle(fontSize: 12),)),
       ];
 
       return DataRow(cells: cells);
@@ -82,9 +87,11 @@ class _DatabasePageState extends State<DatabasePage> {
                                   ];
                                 }),
                             DataTable(
+                              
+                              columnSpacing: 10,
                               columns: columns,
                               rows: rows,
-                              border: TableBorder.symmetric(),
+                              border: TableBorder.all(),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,

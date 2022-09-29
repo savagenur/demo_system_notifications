@@ -1,5 +1,7 @@
 import 'package:demo_system_notifications/pages/auto_mode_page.dart';
+import 'package:demo_system_notifications/pages/auto_mode_result_page.dart';
 import 'package:demo_system_notifications/pages/database_page.dart';
+import 'package:demo_system_notifications/pages/database_second_page.dart';
 import 'package:demo_system_notifications/pages/settings_of_auto_notif_page.dart';
 import 'package:demo_system_notifications/pages/side_navigation_bar_page.dart';
 import 'package:flutter/material.dart';
@@ -26,12 +28,19 @@ class _HomePageState extends State<HomePage> {
       '0': {
         'page': AutoModePage(),
         'floatingActionButton': ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              selectedIndex = 10;
+            });
+          },
           child: Text("Результаты"),
         ),
       },
       '1': {
-        'page': DatabasePage(),
+        'page': DatabasePage(
+           selectedIndex: selectedIndex,
+          selectedIndexSetter: selectedIndexSetter,
+        ),
         'floatingActionButton': FloatingActionButton(
           onPressed: () {
             setState(() {
@@ -48,16 +57,47 @@ class _HomePageState extends State<HomePage> {
       '6': {'page': Container(), 'floatingActionButton': Container()},
       '7': {'page': Container(), 'floatingActionButton': Container()},
       '8': {'page': Container(), 'floatingActionButton': Container()},
+      // Database Settings
       '9': {
         'page': SettingsOfAutoNotificationPage(
           selectedIndexSetter: selectedIndexSetter,
         ),
         'floatingActionButton': Container()
       },
+      // AutoModeResultPage
+      '10': {
+        'page': AutoModeResultPage(
+          selectedIndexSetter: selectedIndexSetter,
+        ),
+        'floatingActionButton': Container()
+      },
+      // Database SecondPage
+
+      '11': {
+        'page': DatabaseSecondPage(
+          selectedIndex: selectedIndex,
+          selectedIndexSetter: selectedIndexSetter,
+        ),
+        'floatingActionButton': FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              selectedIndex = 9;
+            });
+          },
+          child: Icon(Icons.settings),
+        )
+      },
+      '12': {
+        'page': AutoModeResultPage(
+          selectedIndexSetter: selectedIndexSetter,
+        ),
+        'floatingActionButton': Container()
+      },
+      
     };
     final pagess = [
       AutoModePage(),
-      DatabasePage(),
+
       Container(),
       Container(),
       Container(),

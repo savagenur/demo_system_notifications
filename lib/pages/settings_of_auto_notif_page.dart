@@ -78,7 +78,7 @@ class _SettingsOfAutoNotificationPageState
                     padding: const EdgeInsets.all(8.0),
                     child: builtExpansionPanelList(),
                   ),
-                  SizedBox(
+                 const SizedBox(
                     height: defaultPadding,
                   ),
                   Row(
@@ -95,7 +95,7 @@ class _SettingsOfAutoNotificationPageState
                         child: Text('Отмена'),
                       ),
                     ],
-                  ),
+                  ),                  
                 ],
               ),
             ),
